@@ -1,6 +1,7 @@
 ---
 import { links } from '../data/site';
 const onVisitPage = Astro.url.pathname.replace(/\/$/, '') === '/visit';
+const onWinesPage = Astro.url.pathname.replace(/\/$/, '') === '/wines';
 ---
 
 <a class="skip-link" href="#main">Skip to content</a>
@@ -11,11 +12,11 @@ const onVisitPage = Astro.url.pathname.replace(/\/$/, '') === '/visit';
     <span>Mountain Run<small>WINERY · CULPEPER, VA</small></span>
   </a>
   <nav class="desktop-nav" aria-label="Main navigation">
-    <a href="/#our-farm">Our farm</a><a href="/#wines">The wines</a><a href="/#events">Happenings</a>
+    <a href="/#our-farm">Our farm</a><a href="/wines/" aria-current={onWinesPage ? 'page' : undefined}>The wines</a><a href="/#events">Happenings</a>
     <a class="button button-small" href="/visit/" aria-current={onVisitPage ? 'page' : undefined}>Plan a visit <span aria-hidden="true">↗</span></a>
   </nav>
   <details class="mobile-menu"><summary>Menu <span aria-hidden="true">+</span></summary>
-    <nav aria-label="Mobile navigation"><a href="/#our-farm">Our farm</a><a href="/#wines">The wines</a><a href="/#events">Happenings</a><a href="/visit/" aria-current={onVisitPage ? 'page' : undefined}>Plan your visit</a></nav>
+    <nav aria-label="Mobile navigation"><a href="/#our-farm">Our farm</a><a href="/wines/" aria-current={onWinesPage ? 'page' : undefined}>The wines</a><a href="/#events">Happenings</a><a href="/visit/" aria-current={onVisitPage ? 'page' : undefined}>Plan your visit</a></nav>
   </details>
 </header>
 

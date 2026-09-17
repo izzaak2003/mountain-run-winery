@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { links } from '../data/site';
+import { wineGroups } from '../data/wines';
+import bottles from '../assets/tasting-room.jpg';
+---
+
+<BaseLayout title="The Wines — Mountain Run Winery Portfolio Demo" description="Meet six wines from Mountain Run Winery, from Culpeper LOVE to Dirt Road Rosé. An unofficial portfolio concept with links to the official store.">
+  <div class="wrap wine-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">The wines</span></nav>
+    <section class="wine-opening" aria-labelledby="wine-page-title">
+      <div class="wine-opening-copy">
+        <p class="eyebrow">Mountain Run · Culpeper, Virginia</p>
+        <h1 id="wine-page-title">Culpeper,<br /> <em>by the glass.</em></h1>
+        <p>Start with six wines from the Mountain Run list. A few names to remember when you get to the tasting barn.</p>
+        <a class="text-link" href="#wine-selection">Browse the selection <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="wine-opening-photo">
+        <Image src={bottles} alt="Mountain Run Meritage beside the bottle rack in the corn-crib tasting room" widths={[480, 800, 1200, 1500]} sizes="(max-width: 760px) 100vw, 50vw" format="webp" loading="eager" fetchpriority="high" />
+        <figcaption>Meritage at the tasting barn.</figcaption>
+      </figure>
+    </section>
+    <section class="wine-catalog" id="wine-selection" aria-labelledby="selection-title">
+      <div class="wine-catalog-intro">
+        <p class="eyebrow">From the winery’s list</p>
+        <h2 id="selection-title">Six to<br /> <em>get to know.</em></h2>
+        <nav class="wine-index" aria-label="Wine styles">
+          {wineGroups.map((group) => <a href={`#${group.id}`}>{group.name}<span aria-hidden="true">↓</span></a>)}
+        </nav>
+        <p class="source-note">Selection reviewed September 17, 2026. Notes adapted from the <a href={links.wines}>official wine list</a>. Vintages and availability change; this is a selection, not live inventory.</p>
+      </div>
+      <div class="wine-groups">
+        {wineGroups.map((group) => (
+          <section class="wine-group" id={group.id} aria-labelledby={`${group.id}-title`}>
+            <h3 id={`${group.id}-title`}>{group.name}</h3>
+            <dl class="wine-entries">
+              {group.wines.map((wine) => (
+                <div class="wine-entry">
+                  <dt>{wine.name}</dt>
+                  <dd><p class="wine-style">{wine.style}</p><p>{wine.description}</p></dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ))}
+      </div>
+    </section>
+    <section class="wine-next" aria-labelledby="wine-next-title">
+      <div><p class="eyebrow">From the list to your glass</p><h2 id="wine-next-title">Taste at the barn.<br /> <em>Order from home.</em></h2></div>
+      <div><p>Plan a tasting-room visit, or check the official store for current bottles and prices. Orders and shipping are handled through Vinoshipper.</p><div class="wine-next-links"><a class="button" href={links.shop}>Shop on Vinoshipper <span aria-hidden="true">↗</span></a><a class="text-link" href="/visit/">Plan a tasting-room visit <span aria-hidden="true">→</span></a></div></div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .wine-opening { display: grid; grid-template-columns: 1.1fr 1fr; gap: 75px; padding-block: 45px 65px; align-items: center; }
+  .wine-page h1 { font-size: clamp(54px, 5.7vw, 82px); margin-top: 22px; }
+  .wine-opening-copy > p:not(.eyebrow) { max-width: 370px; font-size: 18px; color: var(--muted); margin-top: 25px; }
+  .wine-opening-copy .text-link { margin-top: 22px; }
+  .wine-opening-photo img { width: 100%; aspect-ratio: 1.4; object-fit: cover; object-position: 38% center; }
+  .wine-opening-photo figcaption { color: var(--muted); font-size: 12px; margin-top: 12px; }
+  .wine-catalog { display: grid; grid-template-columns: .75fr 1.45fr; gap: 100px; border-top: 1px solid var(--line); padding-block: 65px 80px; }
+  .wine-catalog-intro h2 { font-size: clamp(38px, 3.5vw, 49px); }
+  .wine-index { display: flex; flex-direction: column; margin-block: 28px; max-width: 240px; border-top: 1px solid var(--line); }
+  .wine-index a { display: flex; justify-content: space-between; padding-block: 13px; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .wine-index a:hover { color: var(--wine); }
+  .wine-catalog-intro .source-note { max-width: 265px; }
+  .wine-group + .wine-group { margin-top: 44px; }
+  .wine-group h3 { font-family: var(--sans); color: var(--wine); font-weight: 650; font-size: 13px; text-transform: uppercase; letter-spacing: .15em; border-bottom: 2px solid var(--wine); padding-bottom: 12px; }
+  .wine-entries { margin: 0; }
+  .wine-entry { display: grid; grid-template-columns: .95fr 1.1fr; gap: 30px; padding-block: 26px; border-bottom: 1px solid var(--line); }
+  .wine-entry dt { font-family: var(--serif); font-size: clamp(24px, 2.2vw, 31px); line-height: 1.18; letter-spacing: -.035em; }
+  .wine-entry dd { margin: 0; color: #565e4f; font-size: 16px; }
+  .wine-style { font-size: 12px; color: var(--wine); font-weight: 600; margin-bottom: 9px; }
+  .wine-next { display: grid; grid-template-columns: 1fr 1fr; gap: 75px; padding-block: 48px 65px; border-top: 3px solid var(--ink); align-items: center; }
+  .wine-next h2 { font-size: clamp(32px, 3.1vw, 44px); }
+  .wine-next > div > p:not(.eyebrow) { font-size: 17px; color: var(--muted); max-width: 460px; }
+  .wine-next-links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 23px; }
+  .wine-next-links .text-link { font-size: 15px; }
+  @media (max-width: 1100px) {
+    .wine-opening { gap: 38px; }
+    .wine-catalog { gap: 50px; }
+    .wine-entry { grid-template-columns: 1fr; gap: 12px; }
+    .wine-next { gap: 45px; }
+  }
+  @media (max-width: 760px) {
+    .wine-opening { grid-template-columns: 1fr; gap: 30px; padding-block: 35px 38px; }
+    .wine-page h1 { font-size: clamp(44px, 12vw, 74px); }
+    .wine-opening-copy > p:not(.eyebrow) { font-size: 17px; }
+    .wine-opening-photo img { aspect-ratio: 1.5; }
+    .wine-catalog { grid-template-columns: 1fr; gap: 34px; padding-block: 38px 48px; }
+    .wine-catalog-intro h2 br { display: none; }
+    .wine-index { flex-direction: row; gap: 26px; max-width: none; border-bottom: 1px solid var(--line); margin-block: 23px 18px; }
+    .wine-index a { gap: 12px; border: 0; }
+    .wine-catalog-intro .source-note { max-width: 420px; }
+    .wine-entry { padding-block: 23px; }
+    .wine-entry dt { font-size: 29px; }
+    .wine-group + .wine-group { margin-top: 32px; }
+    .wine-next { grid-template-columns: 1fr; gap: 24px; padding-block: 35px 48px; }
+  }
+  @media (max-width: 380px) { .wine-index { gap: 19px; } .wine-index a { gap: 8px; } }
+</style>

@@ -6,7 +6,7 @@ The official business website is https://www.mountainrunwinery.com/.
 
 ## Current scope
 
-A responsive homepage and a dedicated Plan Your Visit page, with real farm
+A responsive homepage, a six-wine introduction, and a Plan Your Visit page, with real farm
 photography, Fraunces and Source Sans 3 typography, a dated event snapshot,
 farm and wine introductions, seasonal hours, and practical visitor information.
 Built with **Astro, TypeScript, and plain CSS**. No React, Tailwind, CMS,
@@ -41,10 +41,12 @@ Using `npm.cmd` avoids PowerShell's script-execution-policy issue with `npm.ps1`
 | --- | --- |
 | `src/pages/index.astro` | Homepage content; maps to `/` |
 | `src/pages/visit.astro` | Visitor information; maps to `/visit/` |
+| `src/pages/wines.astro` | Selected wine list and its page-specific styling; maps to `/wines/` |
 | `src/layouts/BaseLayout.astro` | Shared document, metadata, header, and footer |
 | `src/components/` | Reusable navigation and footer |
-| `src/styles/global.css` | All styling for this starter |
+| `src/styles/global.css` | Shared styling, homepage, and visitor page |
 | `src/data/site.ts` | Featured event details and official links |
+| `src/data/wines.ts` | Six featured wines, grouped by style |
 | `src/assets/` | Original photos that Astro optimizes during the build |
 | `public/` | Files copied directly to the published website |
 | `astro.config.mjs` | Astro configuration; generates a static site |

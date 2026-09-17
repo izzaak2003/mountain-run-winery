@@ -22,6 +22,10 @@ ever progresses beyond a portfolio concept.
 - Farm setting and corn crib: https://www.mountainrunwinery.com/
 - Address, picnics, pets, accessibility, and seasonal hours: https://www.mountainrunwinery.com/visit-us/
 - Viognier nickname and tasting notes: https://www.mountainrunwinery.com/wines/
+- Wine page selection (Viognier, Culpeper LOVE, Dirt Road Rosé, Dog Rock Rosé,
+  Meritage, Culpeper Crimson): https://www.mountainrunwinery.com/wines/
+  Reviewed September 17, 2026. Brief descriptions are paraphrased. No vintage,
+  bottle price, or stock status is asserted; Vinoshipper handles current orders.
 - Weddings: https://www.mountainrunwinery.com/weddings/
 - Wine shopping handoff: https://vinoshipper.com/shop/mountain_run_winery
 - Festival on September 19, 2026: https://www.mountainrunwinery.com/events-2/event/virginia-mead-honey-festival/
