@@ -59,8 +59,11 @@ The preview command serves that production build locally.
 
 Repository: https://github.com/izzaak2003/mountain-run-winery
 
-Connect this repository in Netlify using **Import an existing project → GitHub**.
-Use the free plan and these settings:
+Live demo: https://mountain-run-winery-demo.netlify.app/
+
+Netlify dashboard: https://app.netlify.com/projects/mountain-run-winery-demo
+
+The repository is connected to Netlify. The deployment settings are:
 
 - Production branch: `main`
 - Base directory: leave blank (the repository root is the website project)
