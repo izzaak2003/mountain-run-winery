@@ -1,22 +1,77 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { events, links } from '../data/site';
+import barn from '../assets/corn-crib.jpg';
+import farm from '../assets/farm.jpg';
+import bottles from '../assets/tasting-room.jpg';
 ---
 
-<BaseLayout
-  title="Mountain Run Winery — Unofficial Portfolio Demo"
-  description="An independent web design portfolio concept inspired by Mountain Run Winery in Culpeper, Virginia. This is not the winery's official website."
->
-  <p class="demo-label">Unofficial portfolio demo</p>
-  <h1>Mountain Run Winery</h1>
-  <p class="location">Culpeper, Virginia</p>
-  <p>
-    A new website concept is taking root. This is the first page of an independent
-    web design project; the full design is still to come.
-  </p>
-  <hr />
-  <p>
-    This demo is not affiliated with or endorsed by Mountain Run Winery.
-    For current hours, events, and purchases, please visit the official website.
-  </p>
-  <a href="https://www.mountainrunwinery.com/">Visit the official winery website &rarr;</a>
+<BaseLayout title="Mountain Run Winery — Unofficial Portfolio Demo" description="An independent design concept for a Virginia farm winery. Old barns, small-batch wines, and room to stay awhile. Unofficial portfolio demo.">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="demo-banner"><span>Unofficial portfolio concept</span><a href={links.official}>Official winery website <span aria-hidden="true">↗</span></a></div>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#" aria-label="Mountain Run Winery home">
+      <svg viewBox="0 0 48 52" aria-hidden="true" class="barn-mark"><path d="M4 21 24 5l20 16M9 18v29h30V18M16 22v25m8-25v25m8-25v25M5 47h38" /></svg>
+      <span>Mountain Run<small>WINERY · CULPEPER, VA</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="#our-farm">Our farm</a><a href="#wines">The wines</a><a href="#events">Happenings</a><a class="button button-small" href="#visit">Come on out <span aria-hidden="true">↗</span></a></nav>
+    <details class="mobile-menu"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation"><a href="#our-farm">Our farm</a><a href="#wines">The wines</a><a href="#events">Happenings</a><a href="#visit">Plan your visit</a></nav></details>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span> A Virginia farm winery</p>
+        <h1 id="hero-title">Good wine.<br />Old barns.<br /><em>Stay awhile.</em></h1>
+        <p class="hero-intro">A little off the beaten path. A little closer to what matters. Pull up a chair in Culpeper’s countryside.</p>
+        <div class="hero-actions"><a class="button" href="#visit">Plan your visit <span aria-hidden="true">↗</span></a><a class="text-link" href="#events">What’s happening <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-footnote">Small-batch wines. Wide-open afternoons.</p>
+      </div>
+      <figure class="hero-photo">
+        <Image src={barn} alt="Mountain Run Winery’s weathered wooden tasting barn, framed by pine trees" widths={[480, 800, 1200, 1500]} sizes="(max-width: 760px) 100vw, 55vw" format="webp" loading="eager" fetchpriority="high" />
+        <figcaption><span>Room to slow down.</span><span>Culpeper, Virginia <span aria-hidden="true">↗</span></span></figcaption>
+        <div class="farm-stamp" aria-hidden="true"><span>ROOTED IN</span><strong>Virginia</strong><span>POURING WITH PRIDE</span></div>
+      </figure>
+    </section>
+    <div class="welcome-strip" aria-label="At a glance"><div class="wrap"><span>Family owned</span><span aria-hidden="true">✳</span><span>Dogs welcome</span><span aria-hidden="true">✳</span><span>Picnics encouraged</span><span aria-hidden="true">✳</span><span>Good company included</span></div></div>
+    <section class="events-section wrap section-space" id="events" aria-labelledby="events-title">
+      <div class="section-heading"><div><p class="eyebrow">Around here, there’s always a reason</p><h2 id="events-title">Make a day <em>of it.</em></h2></div><a class="text-link" href={links.events}>Official event calendar <span aria-hidden="true">↗</span></a></div>
+      <div class="event-list">{events.map((event) => (
+        <article class="event-row">
+          <time class="event-date" datetime={event.date}><span>{event.month}</span><strong>{event.day}</strong><span>2026</span></time>
+          <div class="event-content"><p class="event-meta">{event.category}<span aria-hidden="true"> / </span>{event.time}</p><h3><a href={event.url}>{event.name}</a></h3><p>{event.description}</p></div>
+          <a class="event-arrow" href={event.url} aria-label={`Official details for ${event.name}`}><span aria-hidden="true">↗</span></a>
+        </article>
+      ))}</div>
+      <p class="source-note">Calendar snapshot · September 2026. Check official listings for current details and tickets.</p>
+    </section>
+    <section class="farm-section" id="our-farm" aria-labelledby="farm-title"><div class="wrap farm-grid section-space">
+      <figure class="farm-photo"><Image src={farm} alt="An aerial view of the winery’s three barns, surrounded by green fields and woodland" widths={[480, 800, 1200, 1437]} sizes="(max-width: 760px) 100vw, 50vw" format="webp" loading="lazy" /><figcaption>Old wood. New stories. A very Virginia kind of place.</figcaption></figure>
+      <div class="farm-copy"><p class="eyebrow">A farm first. A winery by nature.</p><h2 id="farm-title">Some places have a story.<br /><em>You can feel ours.</em></h2><p>Weathered oak. Sunlight through the slats. A tasting room tucked into an old corn crib, with fields and woodland just beyond the door.</p><p>These barns were made for working the land. Today, they’re also made for pulling up a chair, sharing a bottle, and letting the afternoon take its time.</p><a class="text-link" href={links.visit}>Get to know the farm <span aria-hidden="true">↗</span></a></div>
+    </div></section>
+    <section class="wine-section wrap section-space" id="wines" aria-labelledby="wine-title">
+      <div class="wine-copy"><p class="eyebrow">Grown with character. Poured with it, too.</p><h2 id="wine-title">Find your<br /><em>kind of glass.</em></h2><p>Bold reds, bright whites, and something on the sweeter side. Small batches with plenty of personality, made to be enjoyed your way.</p><div class="wine-links"><a class="button" href={links.wines}>Explore the wines <span aria-hidden="true">↗</span></a><a class="text-link" href={links.shop}>Shop on Vinoshipper <span aria-hidden="true">↗</span></a></div><p class="source-note">Wine selection and availability on the official site.</p></div>
+      <figure class="wine-photo"><Image src={bottles} alt="A bottle of Mountain Run Meritage beside a wine rack in the sunlit tasting room" widths={[480, 800, 1200, 1500]} sizes="(max-width: 760px) 100vw, 50vw" format="webp" loading="lazy" /></figure>
+    </section>
+    <section class="visit-section" id="visit" aria-labelledby="visit-title"><div class="wrap visit-grid section-space">
+      <div><p class="eyebrow">A country afternoon is calling</p><h2 id="visit-title">We’ll save you<br /><em>a little room.</em></h2><p>Bring a picnic, bring your people, bring the dog on a leash. There’s a spot for you at the farm.</p><a class="button button-light" href={links.visit}>Check hours & plan a visit <span aria-hidden="true">↗</span></a></div>
+      <div class="visit-details"><div><p class="eyebrow">Find the farm</p><address>10753 Mountain Run Lake Road<br />Culpeper, Virginia 22701</address><a class="text-link" href={links.directions}>Get directions <span aria-hidden="true">↗</span></a></div><div><p class="eyebrow">Something worth celebrating?</p><p>Old barns. Open skies. Your favorite people.</p><a class="text-link" href={links.weddings}>Weddings at the winery <span aria-hidden="true">↗</span></a></div><p class="visit-note">Hours vary by season. Confirm hours, accessibility arrangements, and group visits with the winery before heading out.</p></div>
+    </div></section>
+  </main>
+  <footer class="site-footer wrap">
+    <div class="footer-top"><a class="footer-wordmark" href="#">Mountain Run <em>Winery</em></a><span>Culpeper, Virginia. Come as you are.</span><a class="text-link" href="#main">Back to top <span aria-hidden="true">↑</span></a></div>
+    <div class="footer-bottom"><p>Unofficial portfolio concept. Not affiliated with or endorsed by Mountain Run Winery.<br />Photography and business information from the <a href={links.official}>official winery website</a>. All transactions and inquiries go to the winery’s official services.</p><a href="https://github.com/izzaak2003/mountain-run-winery">About this project <span aria-hidden="true">↗</span></a></div>
+  </footer>
+  <script>
+    const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+    menu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => { menu.open = false; });
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu?.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+  </script>
 </BaseLayout>

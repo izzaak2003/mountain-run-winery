@@ -6,9 +6,14 @@ The official business website is https://www.mountainrunwinery.com/.
 
 ## Current scope
 
-A single placeholder homepage to establish local development and deployment.
-Built with **Astro, TypeScript, and plain CSS**. Full visual design comes next.
-No React, Tailwind, CMS, commerce, or AI backend is included.
+A responsive homepage with real farm photography, Fraunces and Source Sans 3
+typography, a dated event snapshot, farm and wine introductions, and visitor links.
+Built with **Astro, TypeScript, and plain CSS**. No React, Tailwind, CMS,
+checkout, or AI backend is included. Official services handle purchases and inquiries.
+
+The design uses parchment, forest green, and wine red. A small barn mark and
+slatted section divider reference the real corn crib instead of generic wine imagery.
+Fonts are self-hosted. Astro creates responsive WebP images during the build.
 
 ## Run on Windows
 
@@ -36,6 +41,8 @@ Using `npm.cmd` avoids PowerShell's script-execution-policy issue with `npm.ps1`
 | `src/pages/index.astro` | Homepage content; maps to `/` |
 | `src/layouts/BaseLayout.astro` | Shared HTML document, metadata, and TypeScript props |
 | `src/styles/global.css` | All styling for this starter |
+| `src/data/site.ts` | Featured event details and official links |
+| `src/assets/` | Original photos that Astro optimizes during the build |
 | `public/` | Files copied directly to the published website |
 | `astro.config.mjs` | Astro configuration; generates a static site |
 | `netlify.toml` | Build command, output folder, and Node version for Netlify |
@@ -95,6 +102,10 @@ search engines not index the demo; these are not access controls.
 
 ## Later
 
-Build the actual visual design and static content first. Any future wine
+Refine this homepage before adding dedicated wine, visit, or event pages.
+The event section is explicitly a September 2026 snapshot, not a live calendar.
+Update the dates, links, and visible snapshot label together when refreshing it.
+Business information and photo provenance are recorded in `CONTENT-SOURCES.md`.
+Any future wine
 concierge needs a server-side function; API secrets must never go into browser
 code. A self-hosted model would be an external endpoint, set up separately.
