@@ -6,8 +6,9 @@ The official business website is https://www.mountainrunwinery.com/.
 
 ## Current scope
 
-A responsive homepage with real farm photography, Fraunces and Source Sans 3
-typography, a dated event snapshot, farm and wine introductions, and visitor links.
+A responsive homepage and a dedicated Plan Your Visit page, with real farm
+photography, Fraunces and Source Sans 3 typography, a dated event snapshot,
+farm and wine introductions, seasonal hours, and practical visitor information.
 Built with **Astro, TypeScript, and plain CSS**. No React, Tailwind, CMS,
 checkout, or AI backend is included. Official services handle purchases and inquiries.
 
@@ -39,7 +40,9 @@ Using `npm.cmd` avoids PowerShell's script-execution-policy issue with `npm.ps1`
 | File | Purpose |
 | --- | --- |
 | `src/pages/index.astro` | Homepage content; maps to `/` |
-| `src/layouts/BaseLayout.astro` | Shared HTML document, metadata, and TypeScript props |
+| `src/pages/visit.astro` | Visitor information; maps to `/visit/` |
+| `src/layouts/BaseLayout.astro` | Shared document, metadata, header, and footer |
+| `src/components/` | Reusable navigation and footer |
 | `src/styles/global.css` | All styling for this starter |
 | `src/data/site.ts` | Featured event details and official links |
 | `src/assets/` | Original photos that Astro optimizes during the build |
@@ -102,7 +105,8 @@ search engines not index the demo; these are not access controls.
 
 ## Later
 
-Refine this homepage before adding dedicated wine, visit, or event pages.
+The barn logo remains a placeholder. Keep changes small and follow the
+business-specific design and copy guidance in `AGENTS.md`.
 The event section is explicitly a September 2026 snapshot, not a live calendar.
 Update the dates, links, and visible snapshot label together when refreshing it.
 Business information and photo provenance are recorded in `CONTENT-SOURCES.md`.

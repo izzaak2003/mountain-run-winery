@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { links } from '../data/site';
+import farm from '../assets/farm.jpg';
+---
+
+<BaseLayout title="Plan Your Visit — Mountain Run Winery Portfolio Demo" description="Seasonal hours, tasting flights, directions, and practical farm details. An unofficial Mountain Run Winery portfolio concept.">
+  <div class="wrap visit-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Plan your visit</span></nav>
+    <section class="visit-arrival" aria-labelledby="arrival-title">
+      <div>
+        <p class="eyebrow">10753 Mountain Run Lake Road</p>
+        <h1 id="arrival-title" class="visit-page-title">An afternoon<br />at <em>the farm.</em></h1>
+        <p class="arrival-intro">Start with the practical bits. Leave the rest of the afternoon open.</p>
+        <address>Culpeper, Virginia 22701</address>
+        <a class="text-link" href={links.directions}>Directions to Mountain Run <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="hours-panel" aria-labelledby="hours-title">
+        <p class="eyebrow">Tasting room</p>
+        <h2 id="hours-title">Weekend hours</h2>
+        <dl class="hours-list">
+          <div><dt>March–October</dt><dd>Friday–Sunday <strong>Noon–7 pm</strong></dd></div>
+          <div><dt>November–February</dt><dd>Saturday–Sunday <strong>Noon–6 pm</strong></dd></div>
+        </dl>
+        <p class="source-note">Hours and visitor details checked September 17, 2026. Confirm hours and prices on the <a href={links.visit}>official Visit page</a> before traveling.</p>
+      </aside>
+    </section>
+    <figure class="visit-landscape">
+      <Image src={farm} alt="Mountain Run Winery’s barns and surrounding fields, viewed from above" widths={[480, 800, 1200, 1437]} sizes="(max-width: 760px) 100vw, 90vw" format="webp" loading="eager" />
+      <figcaption>The barns at Mountain Run · Photograph from the winery’s collection</figcaption>
+    </figure>
+    <section class="visit-practical section-space" aria-labelledby="practical-title">
+      <div class="practical-heading"><p class="eyebrow">Before you head out</p><h2 id="practical-title">At the<br /> <em>tasting barn.</em></h2><a class="text-link" href="/#events">See featured farm events <span aria-hidden="true">↗</span></a></div>
+      <dl class="practical-list">
+        <div><dt>Tasting flights</dt><dd>Choose four wines, ciders, or beers for $12.</dd></div>
+        <div><dt>Food & picnics</dt><dd>Pack your own food; outside alcohol is not permitted.</dd></div>
+        <div><dt>Dogs & children</dt><dd>Leashed dogs and supervised children are welcome, except in the 21+ lounge. There’s a playground, too.</dd></div>
+        <div><dt>Steps & access</dt><dd>The corn crib has five steps; the winter loft has a full flight. Ground-level barn flooring is gravel. Ask staff for tableside service at a ground-level table.</dd></div>
+        <div><dt>Groups over eight</dt><dd>Reserve a tasting ahead of time.<br /><a href="mailto:mountainrunwinery@gmail.com">Email the winery to arrange a group tasting <span aria-hidden="true">↗</span></a></dd></div>
+      </dl>
+    </section>
+  </div>
+</BaseLayout>

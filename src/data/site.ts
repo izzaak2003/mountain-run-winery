@@ -15,14 +15,14 @@ export const events = [
     month: 'SEP', day: '19', date: '2026-09-19',
     name: 'Virginia Mead & Honey Festival',
     category: 'Festival', time: 'Saturday · Noon–5 pm',
-    description: 'Virginia mead, local makers, live music, and a little something sweet.',
+    description: 'Meet Virginia mead makers at the farm, with live music and food trucks throughout the afternoon.',
     url: `${links.events}event/virginia-mead-honey-festival/`,
   },
   {
     month: 'OCT', day: '17', date: '2026-10-17',
     name: 'Fall Festival & Craft Fair',
     category: 'At the farm', time: 'Saturday · Noon–7 pm',
-    description: 'An afternoon of handmade finds, harvest celebrations, and music in the fields.',
+    description: 'Browse 40 craft vendors, with music from Get Down Jack and Fountains. Parking is $5.',
     url: `${links.events}event/fall-festival-and-craft-fair/`,
   },
 ] as const;

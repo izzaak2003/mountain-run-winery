@@ -1,0 +1,33 @@
+---
+import { links } from '../data/site';
+const onVisitPage = Astro.url.pathname.replace(/\/$/, '') === '/visit';
+---
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="demo-banner"><span>Unofficial portfolio concept</span><a href={links.official}>Official winery website <span aria-hidden="true">↗</span></a></div>
+<header class="site-header wrap">
+  <a class="wordmark" href="/" aria-label="Mountain Run Winery home">
+    <svg viewBox="0 0 48 52" aria-hidden="true" class="barn-mark"><path d="M4 21 24 5l20 16M9 18v29h30V18M16 22v25m8-25v25m8-25v25M5 47h38" /></svg>
+    <span>Mountain Run<small>WINERY · CULPEPER, VA</small></span>
+  </a>
+  <nav class="desktop-nav" aria-label="Main navigation">
+    <a href="/#our-farm">Our farm</a><a href="/#wines">The wines</a><a href="/#events">Happenings</a>
+    <a class="button button-small" href="/visit/" aria-current={onVisitPage ? 'page' : undefined}>Plan a visit <span aria-hidden="true">↗</span></a>
+  </nav>
+  <details class="mobile-menu"><summary>Menu <span aria-hidden="true">+</span></summary>
+    <nav aria-label="Mobile navigation"><a href="/#our-farm">Our farm</a><a href="/#wines">The wines</a><a href="/#events">Happenings</a><a href="/visit/" aria-current={onVisitPage ? 'page' : undefined}>Plan your visit</a></nav>
+  </details>
+</header>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => { menu.open = false; });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) {
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    }
+  });
+</script>

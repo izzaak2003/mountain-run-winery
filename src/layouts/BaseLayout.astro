@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import '@fontsource-variable/fraunces/wght.css';
 import '@fontsource-variable/fraunces/wght-italic.css';
 import '@fontsource-variable/source-sans-3/wght.css';
@@ -24,6 +26,8 @@ const { title, description } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <SiteFooter />
   </body>
 </html>
