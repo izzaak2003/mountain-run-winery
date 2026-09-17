@@ -23,7 +23,10 @@ npm.cmd run dev
 ```
 
 Open the local address shown in the terminal (normally http://localhost:4321).
-Saving a source file updates the local preview. Press **Ctrl+C** to stop it.
+Saving a source file updates the local preview. Press **Ctrl+C** to stop a
+foreground server. If Astro reports that it started a background server, use
+`npm.cmd exec astro -- dev stop` to stop it, or
+`npm.cmd exec astro -- dev status` to check it.
 Using `npm.cmd` avoids PowerShell's script-execution-policy issue with `npm.ps1`.
 
 ## The few files to know
